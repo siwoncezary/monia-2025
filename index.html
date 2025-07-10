@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monika Siwoń - Doradca Ubezpieczeniowy | Generali</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+    <style>
+        :root {
+            --bg-color: #f0efec;
+            --text-color: #393f4a;
+            --text-light: #f0efec;
+            --accent-color: #7e93ab;
+            --accent-dark: #6a7c91;
+            --generali-color: #901f37;
+            --section-padding: 8rem 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section {
+            padding: var(--section-padding);
+        }
+
+        h1, h2, h3, h4 {
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--generali-color);
+            color: var(--text-light);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            padding: 8rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+            z-index: 1;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-image img {
+            display: flex;
+            direction: ltr;
+            justify-content: flex-start;
+            align-items: center;
+            width: 200px;
+        }
+
+        .cta-btn {
+            background-color: var(--text-light);
+            color: var(--accent-color);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+
+        /* About Section */
+        .about {
+            background-color: var(--bg-color);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50%;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .about-text ul {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text ul li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .about-text ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: #fff;
+        }
+
+        .services-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .services-title .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--bg-color);
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Process Section */
+        .process {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+        }
+
+        .process-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .process-title .section-title::after {
+            background-color: var(--text-light);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .step {
+            text-align: center;
+            padding: 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: var(--text-light);
+            color: var(--accent-color);
+            border-radius: 50%;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .process-note {
+            text-align: center;
+            margin-top: 3rem;
+            font-weight: 600;
+            font-size: 1.2rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: var(--bg-color);
+        }
+
+        .testimonials-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .testimonials-title .section-title::after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .testimonial {
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .testimonial::before {
+            content: '"';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 3rem;
+            color: var(--accent-color);
+            opacity: 0.2;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: #fff;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+        }
+
+        .contact-form button {
+            background-color: var(--accent-color);
+            color: var(--text-light);
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--accent-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--generali-color);
+            color: var(--text-light);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .footer-links li {
+            margin: 0 1rem;
+        }
+
+        .footer-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-content,
+            .about-content,
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image,
+            .about-image {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background-color: var(--accent-color);
+                flex-direction: column;
+                align-items: center;
+                padding: 2rem 0;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                margin: 1rem 0;
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<header>
+    <div class="container">
+        <nav>
+            <div class="hero-image">
+                <img src="./img/6.png" alt="Ubezpieczenia">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Strona główna</a></li>
+                <li><a href="#about">O mnie</a></li>
+                <li><a href="#services">Oferta</a></li>
+                <li><a href="#process">Jak pracuję</a></li>
+                <li><a href="#testimonials">Opinie</a></li>
+                <li><a href="#contact">Kontakt</a></li>
+            </ul>
+            <div class="hamburger">
+                <div class="line"></div>
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section id="home" class="hero">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-text">
+                <h1>Masz o kogo zadbać? Pomogę Ci to zrobić dobrze</h1>
+                <p>Ubezpieczenia życia, zdrowia, majątku i oszczędzania. Z empatią, konkretnie, po ludzku.</p>
+                <p>Nazywam się Monika Siwoń. Od 2017 roku pomagam ludziom wybierać ubezpieczenia, które naprawdę
+                    działają wtedy, gdy są najbardziej potrzebne.</p>
+                <p>Współpracuję z Generali. Wierzę, że dobra decyzja podjęta dziś może dać spokój na długie lata – Tobie
+                    i Twoim bliskim.</p>
+                <a href="#contact" class="cta-btn"><img src="img/Phone.png" height="30" alt="Telefon" style="vertical-align: middle; margin-right: 10px;">&#13;Zadzwoń lub napisz</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="container">
+        <div class="about-content">
+            <div class="about-image">
+                <img src="./img/avatar.jpg" alt="Monika Siwoń">
+            </div>
+            <div class="about-text">
+                <h2 class="section-title"><img src="img/Home.png" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;">O mnie</h2>
+                <p>Z Generali związana jestem od 20 lat – najpierw jako klient, a od 2017 roku jako doradca.
+                    Specjalizuję się w ubezpieczeniach na życie.</p>
+                <p>Pracuję z uśmiechem, zaangażowaniem i dużym spokojem. Dla mnie to nie jest sprzedaż – to pomaganie w
+                    podejmowaniu odpowiedzialnych decyzji.</p>
+                <h3>Co mnie wyróżnia:</h3>
+                <ul>
+                    <li>Empatia, konkret, brak ciśnienia</li>
+                    <li>Rzetelna wiedza i ludzka rozmowa</li>
+                    <li>Stała opieka – także po podpisaniu umowy</li>
+                </ul>
+                <p>Jestem członkiem Polskiego Stowarzyszenia Rekomendowanych Doradców Ubezpieczeniowych.</p>
+                <p>Prywatnie mam normalne życie – trochę w nim chmur, trochę słońca. Z mężem, trzema synami, dwójką
+                    wnucząt, przygarniętym kotem... i dobrym ubezpieczeniem. Bo mam o Kogo zadbać :)</p>
+                <p>W wolnym czasie czytam książki i szyję kolorowe patchworki.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="services" class="services">
+    <div class="container">
+        <div class="services-title">
+            <h2 class="section-title"><img src="img/Site.png" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;">Oferta – co mogę dla Ciebie zabezpieczyć?</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon"><img src="img/Empathy.png" height="45" alt="Zycie" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 class="service-title">ŻYCIE</h3>
+                <p>Dla osób, które chcą zadbać o najbliższych na wypadek swojej śmierci. Dobieram wysokość ochrony i
+                    długość trwania polisy do Twojej sytuacji.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><img src="img/Medical_examination.png" height="45" alt="Zdrowie" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 class="service-title">ZDROWIE</h3>
+                <p>Dla każdego, kto chce mieć środki na leczenie poważnych chorób. Zakres obejmuje m.in. nowotwory,
+                    operacje, rekonwalescencję.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><img src="img/Accident.png" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 class="service-title">WYPADKI</h3>
+                <p>Dla osób aktywnych, pracujących, kierowców i rodziców. Zabezpieczenie obejmuje urazy, złamania,
+                    hospitalizację i czasową niezdolność do pracy.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><img src="img/Saving.png" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 class="service-title">OSZCZĘDZANIE</h3>
+                <p>Systematyczne budowanie kapitału z dodatkową ochroną życia. Cele: emerytura, poduszka finansowa,
+                    długoterminowe bezpieczeństwo.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><img src="img/Birth.svg" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 class="service-title">DZIECI</h3>
+                <p>Polisy posagowe i ochronne dla dzieci. Start w dorosłość, edukacja, zabezpieczenie zdrowia i
+                    życia.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon"><img src="img/Property.svg" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 class="service-title">MAJĄTEK</h3>
+                <p>Dom, mieszkanie, OC prywatne, sprzęty, samochód. Ubezpieczenia dopasowane do Twojego stylu życia i
+                    majątku.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="process" class="process">
+    <div class="container">
+        <div class="process-title">
+            <h2 class="section-title">Jak pracuję</h2>
+        </div>
+        <div class="process-steps">
+            <div class="step">
+                <div class="step-number">1</div>
+                <h3>Rozmawiamy</h3>
+                <p>Poznaję Twoją sytuację i potrzeby.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <h3>Proponuję rozwiązania</h3>
+                <p>Tylko takie, które pasują do Ciebie.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <h3>Pomagam w formalnościach</h3>
+                <p>Szybko i bez stresu.</p>
+            </div>
+            <div class="step">
+                <div class="step-number">4</div>
+                <h3>Jestem na miejscu</h3>
+                <p>Gdy będziesz potrzebować wsparcia, nie zniknę.</p>
+            </div>
+        </div>
+
+        <style>
+            @media (max-width: 768px) {
+                .contact-grid, .social-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+        <div class="process-note">
+            To nie gotowiec. To plan dopasowany do Ciebie.
+        </div>
+    </div>
+</section>
+
+<section id="testimonials" class="testimonials">
+    <div class="container">
+        <div class="testimonials-title">
+            <h2 class="section-title"><img src="./img/Chat.png" height="30" alt="Telefon" style="vertical-align: middle; margin-right: 10px;">Opinie klientów</h2>
+        </div>
+        <div class="testimonial">
+            <p>„Monika to jedyna osoba, której ufałem w temacie ubezpieczenia. Wszystko po ludzku, bez presji."
+            </p>
+            <p>
+                „P. Monika to profesjonalny agent ubezpieczeniowy.br/Swoją pracę wykonuje z zaangażowaniem.br/Stara Się
+                żeby klient otrzymał rzetelną wiedzę dotyczącą ubezpieczenia.br/Szczerze polecam współpracę z P. Moniką
+                pomogła mi w rozliczeniu odszkodowania przebiegło to bardzo sprawnie."
+            </p>
+            <p>
+                „Polecam - to już moje zdaje się piąte ubezpieczenie w domu i jak zawsze tylko od Pani Moniki, oferta
+                jak zwykle skrojona pod potrzeby klienta a nie najdroższa „z katalogu”br/11/10."
+            </p>
+            <p>
+                „Długo nie mogłam zdecydować się na zawarcie umowy ubezpieczeniowej.br/Obawiałam się zarówno
+                marketingowego wodolejstwa jak i poukrywanych haczyków.br/Jednak rozmowa z Panią Moniką całkowicie
+                rozwiała moje obawy, rzeczowe, wiarygodne i wyczerpujące temat informacje i co niezmiernie ważne podane
+                w przystępny i bardzo zrozumiały sposób.br/Zero zawiłości i zakamuflowanych nacisków, Pani Monika
+                cierpliwie i obszernie wyjaśnia wszelkie aspekty dotyczące usług ubezpieczeniowych.br/Kultura osobista,
+                luz i odrobina poczucia humoru wynosi kontakt z Panią Moniką na jeszcze wyższy poziom - profesjonalistka
+                pełna zaangażowania, ale bardzo przyjazna w rzetelności wobec klienta."
+            </p>
+        </div>
+        <a href="https://www.oferteo.pl/wystaw-opinie/3447164" class="cta-btn"
+           style="background-color: var(--accent-color); color: var(--bg-color);">Dodaj opinię</a>
+
+    </div>
+</section>
+
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="section-title"><img src="img/Phone.png" height="30" alt="Telefon" style="vertical-align: middle; margin-right: 10px;">Kontakt</h2>
+        <p>Masz pytanie? Szukasz rozwiązania, które nie będzie „wciskane na siłę"?</p>
+        <h3 style="margin-top: 4rem; margin-bottom: 2rem; text-align: center; font-size: 1.5rem;">Zadzwoń lub napisz – ustalimy wszystko na spokojnie.</h3>
+
+        <div class="contact-grid"
+             style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem;">
+            <div class="contact-card"
+                 style="background-color: var(--bg-color); border-radius: 10px; padding: 2rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);">
+                <div class="contact-icon" style="font-size: 2.5rem; margin-bottom: 1rem;"><img src="img/Phone.png" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">TELEFON</h3>
+                <p><a href="tel:507013390" style="color: var(--accent-color); text-decoration: none;">507 013 390</a>
+                </p>
+            </div>
+
+            <div class="contact-card"
+                 style="background-color: var(--bg-color); border-radius: 10px; padding: 2rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);">
+                <div class="contact-icon" style="font-size: 2.5rem; margin-bottom: 1rem;"><img src="img/Message.png" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">EMAIL</h3>
+                <p><a href="mailto:monika.siwon@sprzedazgenerali.pl"
+                      style="color: var(--accent-color); text-decoration: none;">monika.siwon@sprzedazgenerali.pl</a>
+                </p>
+            </div>
+
+            <div class="contact-card"
+                 style="background-color: var(--bg-color); border-radius: 10px; padding: 2rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);">
+                <div class="contact-icon" style="font-size: 2.5rem; margin-bottom: 1rem;"><img src="img/Whatsapp.svg" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">WHATSAPP</h3>
+                <p><a href="https://wa.me/48507013390" style="color: var(--accent-color); text-decoration: none;">Napisz
+                    na WhatsApp</a></p>
+            </div>
+
+            <div class="contact-card"
+                 style="background-color: var(--bg-color); border-radius: 10px; padding: 2rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);">
+                <div class="contact-icon" style="font-size: 2.5rem; margin-bottom: 1rem;"><img src="img/Focus_on.png" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 style="font-size: 1.3rem; margin-bottom: 1rem;">MAPA GOOGLE</h3>
+                <p><a href="https://maps.app.goo.gl/MwaiQV57zdYq3i7w6" target="_blank"
+                      style="color: var(--accent-color); text-decoration: none;">Znajdź mnie na mapie</a></p>
+            </div>
+        </div>
+
+        <h3 style="margin-top: 4rem; margin-bottom: 2rem; text-align: center; font-size: 1.5rem;">Znajdź mnie
+            online</h3>
+
+        <div class="social-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+            <div class="social-card"
+                 style="background-color: var(--bg-color); border-radius: 10px; padding: 1.5rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); text-align: center;">
+                <div class="social-icon" style="font-size: 2rem; margin-bottom: 0.5rem;"><img src="img/Wallet.svg" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">ESHOP</h3>
+                <p><a href="https://eshop.generali.pl/partner/1656801" target="_blank"
+                      style="color: var(--accent-color); text-decoration: none;">Kup ubezpieczenie online</a></p>
+            </div>
+
+            <div class="social-card"
+                 style="background-color: var(--bg-color); border-radius: 10px; padding: 1.5rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); text-align: center;">
+                <div class="social-icon" style="font-size: 2rem; margin-bottom: 0.5rem;"><img src="img/Facebook.png" height="45" alt="Facebook" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">FACEBOOK</h3>
+                <p><a href="https://www.facebook.com/doradcaGenerali" target="_blank"
+                      style="color: var(--accent-color); text-decoration: none;">Odwiedź mój profil</a></p>
+            </div>
+
+            <div class="social-card"
+                 style="background-color: var(--bg-color); border-radius: 10px; padding: 1.5rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); text-align: center;">
+                <div class="social-icon" style="font-size: 2rem; margin-bottom: 0.5rem;"><img src="img/LinkedIn.png" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">LINKEDIN</h3>
+                <p><a href="https://www.linkedin.com/in/monika-siwo%C5%84-850b68194/" target="_blank"
+                      style="color: var(--accent-color); text-decoration: none;">Połącz się ze mną</a></p>
+            </div>
+
+            <div class="social-card"
+                 style="background-color: var(--bg-color); border-radius: 10px; padding: 1.5rem; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); text-align: center;">
+                <div class="social-icon" style="font-size: 2rem; margin-bottom: 0.5rem;"><img src="img/Agency.png" height="45" alt="Uczący się" style="vertical-align: middle; margin-right: 10px;"></div>
+                <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">GENERALI</h3>
+                <p><a href="https://www.generali.pl/dla-ciebie/poznaj-agentow-generali/monika-siwon" target="_blank"
+                      style="color: var(--accent-color); text-decoration: none;">Mój profil na stronie Generali</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <ul class="footer-links">
+            <li><a href="#home">Strona główna</a></li>
+            <li><a href="#about">O mnie</a></li>
+            <li><a href="#services">Oferta</a></li>
+            <li><a href="#process">Jak pracuję</a></li>
+            <li><a href="#contact">Kontakt</a></li>
+        </ul>
+        <p class="copyright">© 2025 Monika Siwoń. Wszystkie prawa zastrzeżone.</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,4 @@
+bordowy do #901f37
+niebieski do tła #7e93ab
+grantowy #393f4a
+białawy #f0efec
